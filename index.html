@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantrex - Advanced Discord Bot Documentation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-theme="dark">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-robot"></i>
+            <span>Quantrex</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="#home" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#features" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Features</span>
+            </a>
+            <a href="#commands" class="nav-item">
+                <i class="fas fa-terminal"></i>
+                <span>Commands</span>
+            </a>
+            <a href="#setup" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Setup</span>
+            </a>
+            <a href="#stats" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Statistics</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="themeToggle" class="theme-btn">
+                <i class="fas fa-moon"></i>
+                <span>Dark/Light</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="badge">🚀 Version 4.0.0</div>
+                <h1 class="gradient-text">Quantrex</h1>
+                <p class="tagline">The Ultimate Operating System for Your Discord Server</p>
+                <p class="description">Advanced Moderation • Security System • Music • No Prefix • Automation</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fab fa-discord"></i> Invite Bot
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fab fa-discord"></i> Support Server
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <h2 class="section-title">✨ Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Advanced Security</h3>
+                    <p>Anti-raid, Anti-betray, Limit System with automated emergency actions & whitelist management.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Moderation Suite</h3>
+                    <p>Ban, Kick, Mute, Warn, Automod with 15+ anti-spam & anti-toxin modules.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Music System</h3>
+                    <p>High quality music, playlist support, filters, queue system & DJ role management.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h3>Ticket System</h3>
+                    <p>Customizable ticket panels, transcripts, claim system & multi-category support.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Games & Fun</h3>
+                    <p>Chess, TicTacToe, Connect Four, Wordle, Battleship & 10+ interactive games.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Logging & Automation</h3>
+                    <p>Complete server logging, welcome images, autoroles, autoresponder & custom commands.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hashtag"></i>
+                    <h3>No Prefix System</h3>
+                    <p>Mention the bot or use custom prefix. Supports per-server prefix configuration.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Utility Commands</h3>
+                    <p>Userinfo, Serverinfo, Translate, AFK, Embed builder, Polls & 20+ utilities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Commands Section -->
+        <section id="commands" class="commands">
+            <h2 class="section-title">⚙️ Commands</h2>
+            
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="moderation">🛡️ Moderation</button>
+                <button class="tab-btn" data-category="security">🔒 Security</button>
+                <button class="tab-btn" data-category="music">🎵 Music</button>
+                <button class="tab-btn" data-category="games">🎮 Games</button>
+                <button class="tab-btn" data-category="utility">📦 Utility</button>
+            </div>
+
+            <div id="moderation" class="commands-category active">
+                <div class="command-list">
+                    <div class="command-item"><code>!ban &lt;user&gt; [reason]</code><span>Ban a member from server</span></div>
+                    <div class="command-item"><code>!kick &lt;user&gt; [reason]</code><span>Kick a member from server</span></div>
+                    <div class="command-item"><code>!mute &lt;user&gt; &lt;time&gt; [reason]</code><span>Temporarily mute a member</span></div>
+                    <div class="command-item"><code>!warn &lt;user&gt; &lt;reason&gt;</code><span>Warn a member</span></div>
+                    <div class="command-item"><code>!purge &lt;amount&gt; [user]</code><span>Bulk delete messages</span></div>
+                    <div class="command-item"><code>!slowmode &lt;seconds&gt;</code><span>Set slowmode in channel</span></div>
+                    <div class="command-item"><code>!lock / !unlock</code><span>Lock or unlock a channel</span></div>
+                    <div class="command-item"><code>!nuke</code><span>Clone & delete all messages</span></div>
+                </div>
+            </div>
+
+            <div id="security" class="commands-category">
+                <div class="command-list">
+                    <div class="command-item"><code>!antinuke on/off</code><span>Enable/Disable anti-nuke protection</span></div>
+                    <div class="command-item"><code>!antiraid &lt;level&gt;</code><span>Set raid protection level</span></div>
+                    <div class="command-item"><code>!antibot &lt;action&gt;</code><span>Prevent malicious bot joins</span></div>
+                    <div class="command-item"><code>!limitsystem &lt;module&gt;</code><span>Configure rate limits for actions</span></div>
+                    <div class="command-item"><code>!whitelist &lt;add/remove&gt; &lt;user&gt;</code><span>Manage whitelisted users</span></div>
+                    <div class="command-item"><code>!emergency</code><span>Trigger emergency lockdown</span></div>
+                </div>
+            </div>
+
+            <div id="music" class="commands-category">
+                <div class="command-list">
+                    <div class="command-item"><code>!play &lt;song&gt;</code><span>Play a song from YouTube/Spotify</span></div>
+                    <div class="command-item"><code>!skip</code><span>Skip current song</span></div>
+                    <div class="command-item"><code>!queue</code><span>View music queue</span></div>
+                    <div class="command-item"><code>!filters &lt;filter&gt;</code><span>Apply audio filters (bassboost, 8d, etc)</span></div>
+                    <div class="command-item"><code>!join / !leave</code><span>Bot joins/leaves voice channel</span></div>
+                    <div class="command-item"><code>!pause / !resume</code><span>Pause or resume playback</span></div>
+                </div>
+            </div>
+
+            <div id="games" class="commands-category">
+                <div class="command-list">
+                    <div class="command-item"><code>!chess &lt;user&gt;</code><span>Start a chess game</span></div>
+                    <div class="command-item"><code>!tictactoe &lt;user&gt;</code><span>Challenge someone in TicTacToe</span></div>
+                    <div class="command-item"><code>!wordle</code><span>Play Wordle</span></div>
+                    <div class="command-item"><code>!battleship &lt;user&gt;</code><span>Classic Battleship game</span></div>
+                    <div class="command-item"><code>!typeracer</code><span>Test your typing speed</span></div>
+                </div>
+            </div>
+
+            <div id="utility" class="commands-category">
+                <div class="command-list">
+                    <div class="command-item"><code>!userinfo [user]</code><span>Get user information</span></div>
+                    <div class="command-item"><code>!serverinfo</code><span>Display server statistics</span></div>
+                    <div class="command-item"><code>!translate &lt;text&gt;</code><span>Translate text to any language</span></div>
+                    <div class="command-item"><code>!afk &lt;message&gt;</code><span>Set AFK status</span></div>
+                    <div class="command-item"><code>!embed &lt;title&gt; &lt;desc&gt;</code><span>Create custom embeds</span></div>
+                    <div class="command-item"><code>!poll &lt;question&gt;</code><span>Create a reaction poll</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup Section -->
+        <section id="setup" class="setup">
+            <h2 class="section-title">🔧 Setup Guide</h2>
+            <div class="setup-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Invite Quantrex</h3>
+                    <p>Click the Invite button above and select your server with Administrator permissions.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Configure Prefix</h3>
+                    <p>Use <code>!prefix &lt;new_prefix&gt;</code> or just mention @Quantrex to use commands.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Setup Logging</h3>
+                    <p>Run <code>!setlogs #channel</code> to enable moderation & server logs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Configure Security</h3>
+                    <p>Enable antinuke: <code>!antinuke on</code> and customize protection levels.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="stats">
+            <h2 class="section-title">📊 Live Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-server"></i>
+                    <div class="stat-number" id="serverCount">14,892</div>
+                    <div class="stat-label">Servers</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-number" id="userCount">2.4M</div>
+                    <div class="stat-label">Users</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-charging-station"></i>
+                    <div class="stat-number" id="uptime">99.98%</div>
+                    <div class="stat-label">Uptime (30d)</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-code-branch"></i>
+                    <div class="stat-number">188+</div>
+                    <div class="stat-label">Commands</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2026 Quantrex - Advanced Discord Bot | Built with <i class="fas fa-heart"></i> for Discord communities</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
