@@ -3,246 +3,803 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantrex - Advanced Discord Bot Documentation</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Quantrex - Advanced Multipurpose Discord Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body data-theme="dark">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="logo">
-            <i class="fas fa-robot"></i>
-            <span>Quantrex</span>
-        </div>
-        
-        <nav class="nav-menu">
-            <a href="#home" class="nav-item active">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-            <a href="#features" class="nav-item">
-                <i class="fas fa-star"></i>
-                <span>Features</span>
-            </a>
-            <a href="#commands" class="nav-item">
-                <i class="fas fa-terminal"></i>
-                <span>Commands</span>
-            </a>
-            <a href="#setup" class="nav-item">
-                <i class="fas fa-cog"></i>
-                <span>Setup</span>
-            </a>
-            <a href="#stats" class="nav-item">
-                <i class="fas fa-chart-line"></i>
-                <span>Statistics</span>
-            </a>
-        </nav>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <div class="sidebar-footer">
-            <button id="themeToggle" class="theme-btn">
-                <i class="fas fa-moon"></i>
-                <span>Dark/Light</span>
-            </button>
-        </div>
-    </aside>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <div class="badge">🚀 Version 4.0.0</div>
-                <h1 class="gradient-text">Quantrex</h1>
-                <p class="tagline">The Ultimate Operating System for Your Discord Server</p>
-                <p class="description">Advanced Moderation • Security System • Music • No Prefix • Automation</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">
-                        <i class="fab fa-discord"></i> Invite Bot
-                    </a>
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fab fa-discord"></i> Support Server
-                    </a>
-                </div>
-            </div>
-        </section>
+        /* Theme Variables */
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0b0;
+            --accent: #8b5cf6;
+            --accent-dark: #7c3aed;
+            --accent-light: #a78bfa;
+            --border: #2d2d4a;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
 
-        <!-- Features Section -->
-        <section id="features" class="features">
-            <h2 class="section-title">✨ Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Advanced Security</h3>
-                    <p>Anti-raid, Anti-betray, Limit System with automated emergency actions & whitelist management.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-gavel"></i>
-                    <h3>Moderation Suite</h3>
-                    <p>Ban, Kick, Mute, Warn, Automod with 15+ anti-spam & anti-toxin modules.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-music"></i>
-                    <h3>Music System</h3>
-                    <p>High quality music, playlist support, filters, queue system & DJ role management.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-ticket-alt"></i>
-                    <h3>Ticket System</h3>
-                    <p>Customizable ticket panels, transcripts, claim system & multi-category support.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-gamepad"></i>
-                    <h3>Games & Fun</h3>
-                    <p>Chess, TicTacToe, Connect Four, Wordle, Battleship & 10+ interactive games.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Logging & Automation</h3>
-                    <p>Complete server logging, welcome images, autoroles, autoresponder & custom commands.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-hashtag"></i>
-                    <h3>No Prefix System</h3>
-                    <p>Mention the bot or use custom prefix. Supports per-server prefix configuration.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>Utility Commands</h3>
-                    <p>Userinfo, Serverinfo, Translate, AFK, Embed builder, Polls & 20+ utilities.</p>
-                </div>
-            </div>
-        </section>
+        body.light {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent: #8b5cf6;
+            --accent-dark: #7c3aed;
+            --accent-light: #a78bfa;
+            --border: #e2e8f0;
+        }
 
-        <!-- Commands Section -->
-        <section id="commands" class="commands">
-            <h2 class="section-title">⚙️ Commands</h2>
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 25px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sidebar-nav {
+            padding: 20px;
+        }
+
+        .nav-category {
+            margin-bottom: 25px;
+        }
+
+        .nav-category h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 10px 15px;
+            margin: 5px 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .nav-item i {
+            width: 25px;
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .top-bar {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .theme-toggle {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .theme-btn {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .theme-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero .gradient-text {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 20px 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Commands Section */
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-header {
+            background: var(--bg-secondary);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border);
+        }
+
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .command-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s;
+        }
+
+        .command-name {
+            font-family: monospace;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .command-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .copy-btn {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 40px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
             
-            <div class="category-tabs">
-                <button class="tab-btn active" data-category="moderation">🛡️ Moderation</button>
-                <button class="tab-btn" data-category="security">🔒 Security</button>
-                <button class="tab-btn" data-category="music">🎵 Music</button>
-                <button class="tab-btn" data-category="games">🎮 Games</button>
-                <button class="tab-btn" data-category="utility">📦 Utility</button>
-            </div>
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .stats {
+                gap: 20px;
+            }
+        }
 
-            <div id="moderation" class="commands-category active">
-                <div class="command-list">
-                    <div class="command-item"><code>!ban &lt;user&gt; [reason]</code><span>Ban a member from server</span></div>
-                    <div class="command-item"><code>!kick &lt;user&gt; [reason]</code><span>Kick a member from server</span></div>
-                    <div class="command-item"><code>!mute &lt;user&gt; &lt;time&gt; [reason]</code><span>Temporarily mute a member</span></div>
-                    <div class="command-item"><code>!warn &lt;user&gt; &lt;reason&gt;</code><span>Warn a member</span></div>
-                    <div class="command-item"><code>!purge &lt;amount&gt; [user]</code><span>Bulk delete messages</span></div>
-                    <div class="command-item"><code>!slowmode &lt;seconds&gt;</code><span>Set slowmode in channel</span></div>
-                    <div class="command-item"><code>!lock / !unlock</code><span>Lock or unlock a channel</span></div>
-                    <div class="command-item"><code>!nuke</code><span>Clone & delete all messages</span></div>
-                </div>
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">Q</div>
+                <h1>Quantrex</h1>
             </div>
-
-            <div id="security" class="commands-category">
-                <div class="command-list">
-                    <div class="command-item"><code>!antinuke on/off</code><span>Enable/Disable anti-nuke protection</span></div>
-                    <div class="command-item"><code>!antiraid &lt;level&gt;</code><span>Set raid protection level</span></div>
-                    <div class="command-item"><code>!antibot &lt;action&gt;</code><span>Prevent malicious bot joins</span></div>
-                    <div class="command-item"><code>!limitsystem &lt;module&gt;</code><span>Configure rate limits for actions</span></div>
-                    <div class="command-item"><code>!whitelist &lt;add/remove&gt; &lt;user&gt;</code><span>Manage whitelisted users</span></div>
-                    <div class="command-item"><code>!emergency</code><span>Trigger emergency lockdown</span></div>
-                </div>
+        </div>
+        <div class="sidebar-nav">
+            <div class="nav-category">
+                <h3>Navigation</h3>
+                <a href="#home" class="nav-item active"><i class="fas fa-home"></i> Home</a>
+                <a href="#features" class="nav-item"><i class="fas fa-star"></i> Features</a>
+                <a href="#commands" class="nav-item"><i class="fas fa-terminal"></i> Commands</a>
             </div>
-
-            <div id="music" class="commands-category">
-                <div class="command-list">
-                    <div class="command-item"><code>!play &lt;song&gt;</code><span>Play a song from YouTube/Spotify</span></div>
-                    <div class="command-item"><code>!skip</code><span>Skip current song</span></div>
-                    <div class="command-item"><code>!queue</code><span>View music queue</span></div>
-                    <div class="command-item"><code>!filters &lt;filter&gt;</code><span>Apply audio filters (bassboost, 8d, etc)</span></div>
-                    <div class="command-item"><code>!join / !leave</code><span>Bot joins/leaves voice channel</span></div>
-                    <div class="command-item"><code>!pause / !resume</code><span>Pause or resume playback</span></div>
-                </div>
+            <div class="nav-category">
+                <h3>Categories</h3>
+                <a href="#moderation" class="nav-item"><i class="fas fa-gavel"></i> Moderation</a>
+                <a href="#security" class="nav-item"><i class="fas fa-shield-alt"></i> Security</a>
+                <a href="#automod" class="nav-item"><i class="fas fa-robot"></i> Automod</a>
+                <a href="#music" class="nav-item"><i class="fas fa-music"></i> Music</a>
+                <a href="#games" class="nav-item"><i class="fas fa-gamepad"></i> Games</a>
+                <a href="#utility" class="nav-item"><i class="fas fa-tools"></i> Utility</a>
+                <a href="#tickets" class="nav-item"><i class="fas fa-ticket-alt"></i> Tickets</a>
+                <a href="#giveaways" class="nav-item"><i class="fas fa-gift"></i> Giveaways</a>
             </div>
+        </div>
+    </div>
 
-            <div id="games" class="commands-category">
-                <div class="command-list">
-                    <div class="command-item"><code>!chess &lt;user&gt;</code><span>Start a chess game</span></div>
-                    <div class="command-item"><code>!tictactoe &lt;user&gt;</code><span>Challenge someone in TicTacToe</span></div>
-                    <div class="command-item"><code>!wordle</code><span>Play Wordle</span></div>
-                    <div class="command-item"><code>!battleship &lt;user&gt;</code><span>Classic Battleship game</span></div>
-                    <div class="command-item"><code>!typeracer</code><span>Test your typing speed</span></div>
-                </div>
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
             </div>
-
-            <div id="utility" class="commands-category">
-                <div class="command-list">
-                    <div class="command-item"><code>!userinfo [user]</code><span>Get user information</span></div>
-                    <div class="command-item"><code>!serverinfo</code><span>Display server statistics</span></div>
-                    <div class="command-item"><code>!translate &lt;text&gt;</code><span>Translate text to any language</span></div>
-                    <div class="command-item"><code>!afk &lt;message&gt;</code><span>Set AFK status</span></div>
-                    <div class="command-item"><code>!embed &lt;title&gt; &lt;desc&gt;</code><span>Create custom embeds</span></div>
-                    <div class="command-item"><code>!poll &lt;question&gt;</code><span>Create a reaction poll</span></div>
-                </div>
+            <div class="theme-toggle">
+                <button class="theme-btn active" onclick="setTheme('dark')">🌙 Dark</button>
+                <button class="theme-btn" onclick="setTheme('light')">☀️ Light</button>
             </div>
-        </section>
+        </div>
 
-        <!-- Setup Section -->
-        <section id="setup" class="setup">
-            <h2 class="section-title">🔧 Setup Guide</h2>
-            <div class="setup-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Invite Quantrex</h3>
-                    <p>Click the Invite button above and select your server with Administrator permissions.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Configure Prefix</h3>
-                    <p>Use <code>!prefix &lt;new_prefix&gt;</code> or just mention @Quantrex to use commands.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Setup Logging</h3>
-                    <p>Run <code>!setlogs #channel</code> to enable moderation & server logs.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Configure Security</h3>
-                    <p>Enable antinuke: <code>!antinuke on</code> and customize protection levels.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section id="stats" class="stats">
-            <h2 class="section-title">📊 Live Statistics</h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <i class="fas fa-server"></i>
-                    <div class="stat-number" id="serverCount">14,892</div>
-                    <div class="stat-label">Servers</div>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-users"></i>
-                    <div class="stat-number" id="userCount">2.4M</div>
-                    <div class="stat-label">Users</div>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-charging-station"></i>
-                    <div class="stat-number" id="uptime">99.98%</div>
-                    <div class="stat-label">Uptime (30d)</div>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-code-branch"></i>
-                    <div class="stat-number">188+</div>
-                    <div class="stat-label">Commands</div>
+        <section id="home">
+            <div class="hero">
+                <h1>Welcome to <span class="gradient-text">Quantrex</span></h1>
+                <p>The Ultimate Multipurpose Discord Bot with Advanced Security, Moderation, and Entertainment Features</p>
+                <a href="#" class="btn btn-primary"><i class="fab fa-discord"></i> Invite Quantrex</a>
+                <a href="#" class="btn btn-outline"><i class="fas fa-headset"></i> Support Server</a>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="servers">150K+</div>
+                        <div class="stat-label">Servers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="users">5M+</div>
+                        <div class="stat-label">Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="commands">200+</div>
+                        <div class="stat-label">Commands</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="uptime">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>© 2026 Quantrex - Advanced Discord Bot | Built with <i class="fas fa-heart"></i> for Discord communities</p>
-        </footer>
-    </main>
+        <div class="container">
+            <section id="features" class="section">
+                <h2 class="section-title">Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Advanced Security</h3>
+                        <p>Anti-nuke, anti-raid, anti-betray system with emergency actions and whitelist management</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-gavel"></i></div>
+                        <h3>Powerful Moderation</h3>
+                        <p>Ban, kick, mute, warn, purge, nuke, lock, and 50+ moderation tools</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-music"></i></div>
+                        <h3>High Quality Music</h3>
+                        <p>Play music from YouTube, Spotify with filters, queue system, and DJ roles</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-gamepad"></i></div>
+                        <h3>Fun Games</h3>
+                        <p>TicTacToe, Chess, Connect4, Wordle, Hangman, Typeracer & more</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-ticket-alt"></i></div>
+                        <h3>Ticket System</h3>
+                        <p>Advanced ticket management with transcripts, panels, and custom categories</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                        <h3>Giveaways</h3>
+                        <p>Create and manage giveaways with multiple winners, roles requirements, and rerolls</p>
+                    </div>
+                </div>
+            </section>
 
-    <script src="script.js"></script>
+            <section id="commands" class="section">
+                <h2 class="section-title">Commands</h2>
+                
+                <div id="moderation" class="category-section">
+                    <div class="category-header">
+                        <h3><i class="fas fa-gavel"></i> Moderation Commands</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="commands-grid">
+                        <div class="command-card"><div class="command-name">!ban <button class="copy-btn" onclick="copyCommand('!ban')">Copy</button></div><div class="command-desc">Ban a member from server</div></div>
+                        <div class="command-card"><div class="command-name">!kick <button class="copy-btn" onclick="copyCommand('!kick')">Copy</button></div><div class="command-desc">Kick a member from server</div></div>
+                        <div class="command-card"><div class="command-name">!mute <button class="copy-btn" onclick="copyCommand('!mute')">Copy</button></div><div class="command-desc">Mute a member</div></div>
+                        <div class="command-card"><div class="command-name">!warn <button class="copy-btn" onclick="copyCommand('!warn')">Copy</button></div><div class="command-desc">Warn a member</div></div>
+                        <div class="command-card"><div class="command-name">!purge <button class="copy-btn" onclick="copyCommand('!purge')">Copy</button></div><div class="command-desc">Delete multiple messages</div></div>
+                        <div class="command-card"><div class="command-name">!nuke <button class="copy-btn" onclick="copyCommand('!nuke')">Copy</button></div><div class="command-desc">Clone and delete channel</div></div>
+                        <div class="command-card"><div class="command-name">!lock <button class="copy-btn" onclick="copyCommand('!lock')">Copy</button></div><div class="command-desc">Lock a channel</div></div>
+                        <div class="command-card"><div class="command-name">!slowmode <button class="copy-btn" onclick="copyCommand('!slowmode')">Copy</button></div><div class="command-desc">Set channel slowmode</div></div>
+                    </div>
+                </div>
+
+                <div id="security" class="category-section">
+                    <div class="category-header">
+                        <h3><i class="fas fa-shield-alt"></i> Security Commands</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="commands-grid">
+                        <div class="command-card"><div class="command-name">!antinuke <button class="copy-btn" onclick="copyCommand('!antinuke')">Copy</button></div><div class="command-desc">Enable anti-nuke protection</div></div>
+                        <div class="command-card"><div class="command-name">!antibetray <button class="copy-btn" onclick="copyCommand('!antibetray')">Copy</button></div><div class="command-desc">Prevent staff betrayal</div></div>
+                        <div class="command-card"><div class="command-name">!emergency <button class="copy-btn" onclick="copyCommand('!emergency')">Copy</button></div><div class="command-desc">Lock down server in emergencies</div></div>
+                        <div class="command-card"><div class="command-name">!limit <button class="copy-btn" onclick="copyCommand('!limit')">Copy</button></div><div class="command-desc">Set action limits per member</div></div>
+                        <div class="command-card"><div class="command-name">!whitelist <button class="copy-btn" onclick="copyCommand('!whitelist')">Copy</button></div><div class="command-desc">Manage whitelisted users</div></div>
+                        <div class="command-card"><div class="command-name">!nightmode <button class="copy-btn" onclick="copyCommand('!nightmode')">Copy</button></div><div class="command-desc">Enable night mode protection</div></div>
+                    </div>
+                </div>
+
+                <div id="automod" class="category-section">
+                    <div class="category-header">
+                        <h3><i class="fas fa-robot"></i> Automod Commands</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="commands-grid">
+                        <div class="command-card"><div class="command-name">!antispam <button class="copy-btn" onclick="copyCommand('!antispam')">Copy</button></div><div class="command-desc">Enable spam protection</div></div>
+                        <div class="command-card"><div class="command-name">!antilink <button class="copy-btn" onclick="copyCommand('!antilink')">Copy</button></div><div class="command-desc">Block invites & malicious links</div></div>
+                        <div class="command-card"><div class="command-name">!anticaps <button class="copy-btn" onclick="copyCommand('!anticaps')">Copy</button></div><div class="command-desc">Prevent excessive caps</div></div>
+                        <div class="command-card"><div class="command-name">!antitokenspam <button class="copy-btn" onclick="copyCommand('!antitokenspam')">Copy</button></div><div class="command-desc">Block token spam</div></div>
+                        <div class="command-card"><div class="command-name">!bannedwords <button class="copy-btn" onclick="copyCommand('!bannedwords')">Copy</button></div><div class="command-desc">Add/remove banned words</div></div>
+                        <div class="command-card"><div class="command-name">!antizalgo <button class="copy-btn" onclick="copyCommand('!antizalgo')">Copy</button></div><div class="command-desc">Block zalgo text</div></div>
+                    </div>
+                </div>
+
+                <div id="music" class="category-section">
+                    <div class="category-header">
+                        <h3><i class="fas fa-music"></i> Music Commands</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="commands-grid">
+                        <div class="command-card"><div class="command-name">!play <button class="copy-btn" onclick="copyCommand('!play')">Copy</button></div><div class="command-desc">Play a song</div></div>
+                        <div class="command-card"><div class="command-name">!queue <button class="copy-btn" onclick="copyCommand('!queue')">Copy</button></div><div class="command-desc">Show music queue</div></div>
+                        <div class="command-card"><div class="command-name">!skip <button class="copy-btn" onclick="copyCommand('!skip')">Copy</button></div><div class="command-desc">Skip current song</div></div>
+                        <div class="command-card"><div class="command-name">!filters <button class="copy-btn" onclick="copyCommand('!filters')">Copy</button></div><div class="command-desc">Apply audio filters</div></div>
+                        <div class="command-card"><div class="command-name">!djrole <button class="copy-btn" onclick="copyCommand('!djrole')">Copy</button></div><div class="command-desc">Set DJ role</div></div>
+                        <div class="command-card"><div class="command-name">!stop <button class="copy-btn" onclick="copyCommand('!stop')">Copy</button></div><div class="command-desc">Stop music and clear queue</div></div>
+                    </div>
+                </div>
+
+                <div id="games" class="category-section">
+                    <div class="category-header">
+                        <h3><i class="fas fa-gamepad"></i> Games Commands</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="commands-grid">
+                        <div class="command-card"><div class="command-name">!tictactoe <button class="copy-btn" onclick="copyCommand('!tictactoe')">Copy</button></div><div class="command-desc">Play TicTacToe</div></div>
+                        <div class="command-card"><div class="command-name">!chess <button class="copy-btn" onclick="copyCommand('!chess')">Copy</button></div><div class="command-desc">Play Chess</div></div>
+                        <div class="command-card"><div class="command-name">!connect4 <button class="copy-btn" onclick="copyCommand('!connect4')">Copy</button></div><div class="command-desc">Play Connect4</div></div>
+                        <div class="command-card"><div class="command-name">!wordle <button class="copy-btn" onclick="copyCommand('!wordle')">Copy</button></div><div class="command-desc">Play Wordle</div></div>
+                        <div class="command-card"><div class="command-name">!hangman <button class="copy-btn" onclick="copyCommand('!hangman')">Copy</button></div><div class="command-desc">Play Hangman</div></div>
+                        <div class="command-card"><div class="command-name">!typeracer <button class="copy-btn" onclick="copyCommand('!typeracer')">Copy</button></div><div class="command-desc">Test typing speed</div></div>
+                    </div>
+                </div>
+
+                <div id="utility" class="category-section">
+                    <div class="category-header">
+                        <h3><i class="fas fa-tools"></i> Utility Commands</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="commands-grid">
+                        <div class="command-card"><div class="command-name">!userinfo <button class="copy-btn" onclick="copyCommand('!userinfo')">Copy</button></div><div class="command-desc">Get user information</div></div>
+                        <div class="command-card"><div class="command-name">!serverinfo <button class="copy-btn" onclick="copyCommand('!serverinfo')">Copy</button></div><div class="command-desc">Get server information</div></div>
+                        <div class="command-card"><div class="command-name">!avatar <button class="copy-btn" onclick="copyCommand('!avatar')">Copy</button></div><div class="command-desc">Show user avatar</div></div>
+                        <div class="command-card"><div class="command-name">!translate <button class="copy-btn" onclick="copyCommand('!translate')">Copy</button></div><div class="command-desc">Translate text</div></div>
+                        <div class="command-card"><div class="command-name">!remind <button class="copy-btn" onclick="copyCommand('!remind')">Copy</button></div><div class="command-desc">Set a reminder</div></div>
+                        <div class="command-card"><div class="command-name">!poll <button class="copy-btn" onclick="copyCommand('!poll')">Copy</button></div><div class="command-desc">Create a poll</div></div>
+                    </div>
+                </div>
+
+                <div id="tickets" class="category-section">
+                    <div class="category-header">
+                        <h3><i class="fas fa-ticket-alt"></i> Ticket Commands</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="commands-grid">
+                        <div class="command-card"><div class="command-name">!ticket <button class="copy-btn" onclick="copyCommand('!ticket')">Copy</button></div><div class="command-desc">Create a ticket</div></div>
+                        <div class="command-card"><div class="command-name">!ticket-setup <button class="copy-btn" onclick="copyCommand('!ticket-setup')">Copy</button></div><div class="command-desc">Setup ticket system</div></div>
+                        <div class="command-card"><div class="command-name">!add <button class="copy-btn" onclick="copyCommand('!add')">Copy</button></div><div class="command-desc">Add user to ticket</div></div>
+                        <div class="command-card"><div class="command-name">!close <button class="copy-btn" onclick="copyCommand('!close')">Copy</button></div><div class="command-desc">Close ticket</div></div>
+                        <div class="command-card"><div class="command-name">!transcript <button class="copy-btn" onclick="copyCommand('!transcript')">Copy</button></div><div class="command-desc">Get ticket transcript</div></div>
+                    </div>
+                </div>
+
+                <div id="giveaways" class="category-section">
+                    <div class="category-header">
+                        <h3><i class="fas fa-gift"></i> Giveaway Commands</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="commands-grid">
+                        <div class="command-card"><div class="command-name">!giveaway <button class="copy-btn" onclick="copyCommand('!giveaway')">Copy</button></div><div class="command-desc">Start a giveaway</div></div>
+                        <div class="command-card"><div class="command-name">!reroll <button class="copy-btn" onclick="copyCommand('!reroll')">Copy</button></div><div class="command-desc">Reroll giveaway winner</div></div>
+                        <div class="command-card"><div class="command-name">!end <button class="copy-btn" onclick="copyCommand('!end')">Copy</button></div><div class="command-desc">End giveaway early</div></div>
+                        <div class="command-card"><div class="command-name">!glist <button class="copy-btn" onclick="copyCommand('!glist')">Copy</button></div><div class="command-desc">List active giveaways</div></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Quantrex - The Ultimate Discord Bot | Made with <i class="fas fa-heart" style="color: var(--accent);"></i> for Discord Community</p>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.remove('light');
+            } else {
+                document.body.classList.add('light');
+            }
+            
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if ((theme === 'dark' && btn.textContent.includes('Dark')) ||
+                    (theme === 'light' && btn.textContent.includes('Light'))) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            localStorage.setItem('theme', theme);
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+        
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+        
+        // Close sidebar when clicking nav item on mobile
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('active');
+                }
+                
+                // Update active class
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+        
+        // Copy Command Function
+        function copyCommand(command) {
+            navigator.clipboard.writeText(command);
+            
+            // Show temporary notification
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Category toggle functionality
+        document.querySelectorAll('.category-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const commandsGrid = header.nextElementSibling;
+                if (commandsGrid.style.display === 'none') {
+                    commandsGrid.style.display = 'grid';
+                    header.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg';
+                } else {
+                    commandsGrid.style.display = 'none';
+                    header.querySelector('.fa-chevron-down').style.transform = 'rotate(-90deg)';
+                }
+            });
+        });
+        
+        // Initialize all command grids as visible
+        document.querySelectorAll('.commands-grid').forEach(grid => {
+            grid.style.display = 'grid';
+        });
+        
+        // Animated stats (you can replace with actual API data)
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.innerText = Math.floor(progress * (end - start) + start) + (element.id === 'servers' ? 'K+' : element.id === 'users' ? 'M+' : element.id === 'uptime' ? '%' : '+');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Trigger stats animation when in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue(document.getElementById('servers'), 0, 150, 2000);
+                    animateValue(document.getElementById('users'), 0, 5, 2000);
+                    animateValue(document.getElementById('commands'), 0, 200, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(document.querySelector('.stats'));
+    </script>
 </body>
 </html>
